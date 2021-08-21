@@ -16,33 +16,41 @@
                 <td>{{$user-> name}}</td>
             </tr>
             <tr>
-                <td>{{$user-> surname}}</td>
+                <td>{{$user-> role -> name}}</td>
             </tr>
-            <tr>
-                <td>{{$user-> email}}</td>
-            </tr>
+{{--            <tr>--}}
+{{--                <td>{{$user-> email}}</td>--}}
+{{--            </tr>--}}
         </table>
     @endif
 
     @if(isset($users))
-        @if(!empty(session('message')))
-            <p>{{session('message').', id записи - '.session('id').', title записи - '.session('title')}}</p>
-        @endif
+
 
         <table>
             @foreach($users as $user)
-            {{var_dump($user)}}
+
+                <tr>
+                    <td>{{$user-> login}}</td>
+                </tr>
 
 
-                    <tr>
-                        <td>{{$user-> name}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{$user-> surname}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{$user-> email}}</td>
-                    </tr>
+{{--                    <tr>--}}
+{{--                        <td>{{$user-> name}}</td>--}}
+{{--                    </tr>--}}
+{{--                    <tr>--}}
+{{--                        <td>{{$user-> surname}}</td>--}}
+{{--                    </tr>--}}
+{{--                    <tr>--}}
+{{--                        <td>{{$user-> email}}</td>--}}
+{{--                    </tr>--}}
+
+                    @foreach($user -> roles as $role)
+                            <tr>
+                                <td>{{$role -> name}}</td>
+                            </tr>
+                    @endforeach
+
 
             @endforeach
         </table>

@@ -6,23 +6,32 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Profile;
 
+use App\Models\Role;
+
 class UserController extends Controller{
 
     public function getUser($id){
 
-        $user = User::find($id)->profile;
+        $roles = User::find($id)->roles;
         //var_dump($user);
 
-        return view('test.user', ['user'=>$user]);
+        //$roles = User::find(1)->roles()->orderBy('name')->get();
+        dd($roles);
+
+        //return view('test.user', ['user'=>$user]);
     }
 
     public function getUsers(){
 
-        foreach(User::all() as $user){
-            $users[] = $user -> profile;
-        }
+//        foreach(User::all() as $user){
+//            $users[] = $user -> roles;
+//        }
+
+        $users = User::all();
 
 
         return view('test.user', ['users'=>$users]);
     }
+
+
 }

@@ -55,6 +55,7 @@ Route::get('/post/{id}/', [PostController::class, 'getOne']);
 Route::get('/categories/', [ProductController::class, 'getCategories']);
 Route::get('/category/{id}', [ProductController::class, 'getCategory']);
 Route::get('/events/', [ProductController::class, 'hasThrough']);
+Route::get('/product/add/', [ProductController::class, 'test']);
 
 
 

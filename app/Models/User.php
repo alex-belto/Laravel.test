@@ -42,7 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function profile(){
+    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
         return $this -> hasOne(Profile::class);
+    }
+
+    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this -> belongsToMany(Role::class);
     }
 }
