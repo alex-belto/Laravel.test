@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\GuestBookController;
+
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -58,8 +58,10 @@ Route::get('/category/{id}', [ProductController::class, 'getCategory']);
 Route::get('/events/', [ProductController::class, 'hasThrough']);
 Route::get('/product/add/', [ProductController::class, 'test']);
 
-Route::match(['GET', 'POST'],'/wall/posts/', [GuestBookController::class, 'getPosts']);
+use App\Http\Controllers\GuestBookController;
 
+Route::match(['GET', 'POST'],'/wall/posts/', [GuestBookController::class, 'getPosts']);
+Route::get('/wall/moder/', [ProductController::class, 'moderation']);
 
 
 
