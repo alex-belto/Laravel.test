@@ -9,8 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    protected $dates = ['deleted_at'];
+    public $timestamps = false;
 
-    protected $table = 'category';
+    protected $table = 'categories';
 
     public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
@@ -19,5 +21,10 @@ class Category extends Model
 
     public function events(){
         return $this->hasManyThrough(Event::class, Product::class);
+    }
+
+    public function ads(){
+
+        return $this -> hasMany(Ad::class);
     }
 }
