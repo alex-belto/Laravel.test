@@ -65,5 +65,8 @@ Route::match(['GET', 'POST'],'/wall/edit/{id}', [GuestBookController::class, 'ed
 Route::get('/wall/moder/', [GuestBookController::class, 'moderation']);
 Route::get('/wall/delete/{id}', [GuestBookController::class, 'deletePost']);
 
+use App\Http\Controllers\BoardController;
 
+Route::get('/board/', [BoardController::class, 'mainPage']);
+Route::match(['GET', 'POST'],'/board/ads/{id}', [BoardController::class, 'adsPage']);
 

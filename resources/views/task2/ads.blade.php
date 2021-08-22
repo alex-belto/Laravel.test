@@ -13,16 +13,17 @@
     @endif
 
     <table>
-        @foreach($posts as $post)
+        @foreach($ads as $ad)
             <tr>
-                <td>{{$post->text}}</td>
+                <td>{{$ad->text}}</br></td>
             </tr>
             <tr>
-                <td>{{$post->name}}</td>
+                <td>{{$ad->name}}</br></td>
             </tr>
             <tr>
-                <td>{{$post->date}}</br></br></br></br></td>
+                <td>{{$ad->date}}</br></br></td>
             </tr>
+
         @endforeach
     </table><br><br><br>
 @endsection
@@ -30,9 +31,9 @@
 @section('footer')
     <form action="" method="POST">
         @csrf
+        <textarea name="text" placeholder="Text"></textarea><br><br>
         <input type="text" name="name" placeholder="name"><br><br>
         <input type="date" name="date" ><br><br>
-        <textarea name="text" placeholder="Text"></textarea><br><br>
         <input type="submit" name="submit" value="Отправить">
     </form>
 @endsection
