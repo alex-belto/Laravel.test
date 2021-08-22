@@ -8,11 +8,11 @@
 
 @section('main')
     <table>
-        @foreach($cities as $city)
             <tr>
-                <td><a href="/public/sights/{{$city -> id}}">{{$city -> name}}</a></td>
+                <td>{{$sight -> name}}</td>
             </tr>
-        @endforeach
+            <tr>
+                <td>{{$sight -> description}}</td>
+            </tr>
     </table>
 @endsection
-

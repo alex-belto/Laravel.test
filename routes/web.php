@@ -70,3 +70,10 @@ use App\Http\Controllers\BoardController;
 Route::get('/board/', [BoardController::class, 'mainPage']);
 Route::match(['GET', 'POST'],'/board/ads/{id}', [BoardController::class, 'adsPage']);
 
+use App\Http\Controllers\SightsController;
+
+Route::get('/countries/', [SightsController::class, 'getCountries']);
+Route::get('/cities/{id}', [SightsController::class, 'getCities']);
+Route::get('/sights/{id}', [SightsController::class, 'getSights']);
+Route::get('/sight/{id}', [SightsController::class, 'getSight']);
+
