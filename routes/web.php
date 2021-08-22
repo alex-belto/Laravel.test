@@ -61,7 +61,9 @@ Route::get('/product/add/', [ProductController::class, 'test']);
 use App\Http\Controllers\GuestBookController;
 
 Route::match(['GET', 'POST'],'/wall/posts/', [GuestBookController::class, 'getPosts']);
-Route::get('/wall/moder/', [ProductController::class, 'moderation']);
+Route::match(['GET', 'POST'],'/wall/edit/{id}', [GuestBookController::class, 'editPost']);
+Route::get('/wall/moder/', [GuestBookController::class, 'moderation']);
+Route::get('/wall/delete/{id}', [GuestBookController::class, 'deletePost']);
 
 
 
