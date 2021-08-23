@@ -8,7 +8,11 @@
         <main>
 
             @yield('main')
-            @yield('footer')
+
         </main>
+
+        <footer>
+            @yield('footer')
+        </footer>
     </body>
 </html>

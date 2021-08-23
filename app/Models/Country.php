@@ -11,8 +11,15 @@ class Country extends Model
     protected $dates = ['deleted_at'];
     public $timestamps = false;
 
+
     public function cities(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this -> hasMany(City::class);
+
+    }
+
+    public function sights()
+    {
+        return $this -> hasManyThrough(Sight::class, City::class);
     }
 }

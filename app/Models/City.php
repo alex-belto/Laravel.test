@@ -10,10 +10,15 @@ class City extends Model
     use HasFactory;
     protected $dates = ['deleted_at'];
     public $timestamps = false;
+    protected $fillable = ['name'];
 
     public function sights()
     {
         return $this -> hasMany(Sight::class);
+    }
+    public function country()
+    {
+        return $this -> belongsTo(Country::class);
     }
 
 }

@@ -75,5 +75,10 @@ use App\Http\Controllers\SightsController;
 Route::get('/countries/', [SightsController::class, 'getCountries']);
 Route::get('/cities/{id}', [SightsController::class, 'getCities']);
 Route::get('/sights/{id}', [SightsController::class, 'getSights']);
-Route::get('/sight/{id}', [SightsController::class, 'getSight']);
+Route::get('/moderation/', [SightsController::class, 'moderation']);
+Route::match(['POST', 'GET'],'/moderation/edit/country/{id}', [SightsController::class, 'editCountry']);
+Route::match(['POST', 'GET'],'/moderation/edit/city/{id}', [SightsController::class, 'editCity']);
+Route::match(['POST', 'GET'],'/moderation/edit/sight/{id}', [SightsController::class, 'editSight']);
+Route::match(['POST', 'GET'],'/moderation/add/{loc}/{id}', [SightsController::class, 'add']);
+
 
