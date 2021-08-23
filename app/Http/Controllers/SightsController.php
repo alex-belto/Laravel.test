@@ -102,13 +102,15 @@ class SightsController extends Controller
 
         return view('cities.edit', ['edit'=>$sight]);
     }
-    public function add(Request $request, $loc, $id){
+    public function add(Request $request, $loc, $id)
+    {
 
         if($request -> has('submit') AND $loc == 'country'){
 
             $country = new Country;
             $country -> name = $request -> input('name');
             $country -> save();
+            $request -> session() -> flash('message', 'Запись изменена!');
             return redirect("/moderation/");
         }
         if($request -> has('submit') AND $loc == 'city'){
@@ -116,16 +118,41 @@ class SightsController extends Controller
             $city = new City(['name' => $request -> input('name')]);
             $country = Country::find($id);
             $country -> cities() -> save($city);
+            $request -> session() -> flash('message', 'Запись изменена!');
             return redirect("/moderation/");
         }
         if($request -> has('submit') AND $loc == 'sight'){
             $sight = new Sight(['name'=>$request -> input('name'), 'description'=>$request -> input('description')]);
             $city = City::find($id);
             $city -> sights() -> save($sight);
+            $request -> session() -> flash('message', 'Запись изменена!');
             return redirect("/moderation/");
         }
 
         return view('cities.add');
+    }
+
+    public function dellCountry(Request $request, $id)
+    {
+        $country = Country::find($id);
+        $country -> delete();
+        $request -> session() -> flash('message', 'Запись удалена!');
+        return redirect("/moderation/");
+    }
+
+    public function dellCity(Request $request, $id)
+    {
+        $city = City::find($id);
+        $city -> delete();
+        $request -> session() -> flash('message', 'Запись удалена!');
+        return redirect("/moderation/");
+    }
+    public function dellSight(Request $request, $id)
+    {
+        $sight = Sight::find($id);
+        $sight -> delete();
+        $request -> session() -> flash('message', 'Запись удалена!');
+        return redirect("/moderation/");
     }
 
 }

@@ -7,7 +7,10 @@
 
 
 @section('main')
-    {{--   {{ dump($with)}}--}}
+
+    @if(!empty(session('message')))
+        {{session('message')}}
+    @endif
     <table>
         @foreach($countries as $country)
             <tr>
