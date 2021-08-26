@@ -24,7 +24,9 @@
                 <td>{{$post->date}}</br></br></br></br></td>
             </tr>
         @endforeach
-    </table><br><br><br>
+
+    </table>
+    {{$posts -> links()}}<br><br>
 @endsection
 
 @section('footer')

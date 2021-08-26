@@ -18,7 +18,7 @@ class GuestBookController extends Controller
             $request -> session() -> flash('message', 'Запись успешно добавлена!');
         }
 
-        $posts = Post::orderBy('date', 'desc')-> get();
+        $posts = Post::orderBy('date', 'desc')-> simplePaginate(2);
 
 
         return view('guest.posts', ['posts'=>$posts]);
