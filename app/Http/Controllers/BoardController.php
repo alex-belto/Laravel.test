@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Ad;
+use \Illuminate\Validation\ValidationException;
 
 class BoardController extends Controller
 {
@@ -15,11 +16,21 @@ class BoardController extends Controller
 
     }
 
+    /**
+     * @throws ValidationException
+     */
     public function adsPage(Request $request, $id)
     {
 
         if($request->has('submit'))
         {
+
+            $request -> validate([
+                'name' => 'required',
+                'text' => 'required',
+                'date' => 'required',
+            ]);
+
             $name = $request->input('name');
             $text = $request->input('text');
             $date = $request->input('date');

@@ -28,12 +28,26 @@
     </table><br><br><br>
 @endsection
 
-@section('footer')
+@section('form')
+    @if($errors -> any())
+        <div>
+            <ul>
+                @foreach($errors -> all() as $error)
+                    <li>
+                        {{$error}}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+
+    @endif
+
+
     <form action="" method="POST">
         @csrf
-        <textarea name="text" placeholder="Text"></textarea><br><br>
-        <input type="text" name="name" placeholder="name"><br><br>
-        <input type="date" name="date" ><br><br>
+        <textarea name="text" placeholder="Text">{{ old('text') }}</textarea><br><br>
+        <input type="text" name="name" placeholder="name" value="{{ old('name') }}"><br><br>
+        <input type="date" name="date" value="{{ old('date') }}"><br><br>
         <input type="submit" name="submit" value="Отправить">
     </form>
 @endsection

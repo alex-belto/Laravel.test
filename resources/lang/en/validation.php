@@ -135,8 +135,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'Поле :attribute не заполнено',
+        ],
+        'text' => [
+            'required' => 'Поле :attribute не заполнено',
         ],
     ],
 

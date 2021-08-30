@@ -14,7 +14,7 @@
         </main>
 
         <footer>
-            @yield('footer')
+            @yield('form')
         </footer>
     </body>
 </html>
