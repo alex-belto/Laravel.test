@@ -15,57 +15,57 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+        Route::get('/', function () {
+            return view('welcome');
+        });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+        require __DIR__.'/auth.php';
 
-use App\Http\Controllers\TestController;
+        use App\Http\Controllers\TestController;
 
-Route::get('/test/', [TestController::class, 'form']);
-Route::post('/test/', [TestController::class, 'form']);
-Route::get('/method/', [TestController::class, 'method']);
+        Route::get('/test/', [TestController::class, 'form']);
+        Route::post('/test/', [TestController::class, 'form']);
+        Route::get('/method/', [TestController::class, 'method']);
 
-use App\Http\Controllers\PageController;
+        use App\Http\Controllers\PageController;
 
-Route::get('/page/', [PageController::class, 'one'])->name('page');;
-Route::post('/page/', [PageController::class, 'one'])->name('page');;
+        Route::get('/page/', [PageController::class, 'one'])->name('page');;
+        Route::post('/page/', [PageController::class, 'one'])->name('page');;
 
-Route::get('/page/two/{num?}', [PageController::class, 'two'])->name('pagge');;
-Route::post('/page/two/{num?}', [PageController::class, 'two'])->name('pagge');
+        Route::get('/page/two/{num?}', [PageController::class, 'two'])->name('pagge');;
+        Route::post('/page/two/{num?}', [PageController::class, 'two'])->name('pagge');
 
-use App\Http\Controllers\DataBaseController;
+        use App\Http\Controllers\DataBaseController;
 
-Route::get('/db/', [DataBaseController::class, 'data']);
+        Route::get('/db/', [DataBaseController::class, 'data']);
 
-use App\Http\Controllers\PostController;
+        use App\Http\Controllers\PostController;
 
-Route::match(['GET', 'POST'],'/post/new/', [PostController::class, 'newPost']);
-Route::match(['GET', 'POST'],'/post/edit/{id}', [PostController::class, 'editPost']);
-Route::get('/users/', [UserController::class, 'getUsers']);
-Route::get('/user/{id}/', [UserController::class, 'getUser']);
-Route::get('/post/deleted/', [PostController::class, 'getDeletedPost']);
-Route::get('/post/restore/{id}', [PostController::class, 'restorePost']);
-Route::get('/post/del/{id}', [PostController::class, 'delPost']);
-Route::get('/post/all/{order?}/{dire?}',[PostController::class, 'getAll'], function ($order, $dire) {
-    //
-})->where(['order' => 'date|title|id', 'dire' => 'desc|asc']);
-Route::get('/post/{id}/', [PostController::class, 'getOne']);
-Route::get('/categories/', [ProductController::class, 'getCategories']);
-Route::get('/category/{id}', [ProductController::class, 'getCategory']);
-Route::get('/events/', [ProductController::class, 'hasThrough']);
-Route::get('/product/add/', [ProductController::class, 'test']);
+        Route::match(['GET', 'POST'],'/post/new/', [PostController::class, 'newPost']);
+        Route::match(['GET', 'POST'],'/post/edit/{id}', [PostController::class, 'editPost']);
+        Route::get('/users/', [UserController::class, 'getUsers']);
+        Route::get('/user/{id}/', [UserController::class, 'getUser']);
+        Route::get('/post/deleted/', [PostController::class, 'getDeletedPost']);
+        Route::get('/post/restore/{id}', [PostController::class, 'restorePost']);
+        Route::get('/post/del/{id}', [PostController::class, 'delPost']);
+        Route::get('/post/all/{order?}/{dire?}',[PostController::class, 'getAll'], function ($order, $dire) {
+            //
+        })->where(['order' => 'date|title|id', 'dire' => 'desc|asc']);
+        Route::get('/post/{id}/', [PostController::class, 'getOne']);
+        Route::get('/categories/', [ProductController::class, 'getCategories']);
+        Route::get('/category/{id}', [ProductController::class, 'getCategory']);
+        Route::get('/events/', [ProductController::class, 'hasThrough']);
+        Route::get('/product/add/', [ProductController::class, 'test']);
 
-use App\Http\Controllers\GuestBookController;
+        use App\Http\Controllers\GuestBookController;
 
-Route::match(['GET', 'POST'],'/wall/posts/', [GuestBookController::class, 'getPosts']);
-Route::match(['GET', 'POST'],'/wall/edit/{id}', [GuestBookController::class, 'editPost']);
-Route::get('/wall/moder/', [GuestBookController::class, 'moderation']);
-Route::get('/wall/delete/{id}', [GuestBookController::class, 'deletePost']);
+        Route::match(['GET', 'POST'],'/wall/posts/', [GuestBookController::class, 'getPosts']);
+        Route::match(['GET', 'POST'],'/wall/edit/{id}', [GuestBookController::class, 'editPost']);
+        Route::get('/wall/moder/', [GuestBookController::class, 'moderation']);
+        Route::get('/wall/delete/{id}', [GuestBookController::class, 'deletePost']);
 
 
